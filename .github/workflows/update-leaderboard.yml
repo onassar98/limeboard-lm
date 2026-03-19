@@ -2,8 +2,11 @@ name: Update Limeboard Leaderboard
 
 on:
   schedule:
-    - cron: '0 3 * * *'          # every day at 03:00 UTC
-  workflow_dispatch:             # allows manual run from Actions tab
+    - cron: '0 3 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   scrape:
@@ -16,18 +19,18 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Playwright
+      - name: Install dependencies
         run: |
-          pip install playwright
-          playwright install chromium --with-deps
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
 
       - name: Run Scraper
         run: python scrape.py
 
-      - name: Commit & Push
+      - name: Commit & Push if changed
         run: |
           git config user.name "Limeboard Bot"
-          git config user.email "bot@limeboard.ai"
+          git config user.email "bot@github.com"
           git add data/leaderboard.json
-          git commit -m "Daily leaderboard update" || echo "No changes"
+          git commit -m "Daily leaderboard update" || echo "No changes to commit"
           git push
