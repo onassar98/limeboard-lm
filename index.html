@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Limeboard LM • AI Model Leaderboard 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', system-ui, sans-serif; }
+        .hero-bg { background: linear-gradient(135deg, #0B0B0D 0%, #1A1A1F 100%); }
+        .lime-glow { text-shadow: 0 0 30px #A4FF00, 0 0 60px #A4FF00; }
+        .table-row:hover { background-color: #1F1F24; transform: scale(1.02); }
+        .nav-link:after { content:''; position:absolute; width:0; height:2px; bottom:-2px; left:0; background:#A4FF00; transition:all .3s; }
+        .nav-link:hover:after { width:100%; }
+    </style>
+</head>
+<body class="bg-[#0B0B0D] text-white">
+
+<!-- NAVBAR -->
+<nav class="fixed top-0 z-50 bg-[#0B0B0D]/90 backdrop-blur-lg border-b border-[#A4FF00]/10 w-full">
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+        <div class="flex items-center gap-3">
+            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" class="logo-svg"><rect x="8" y="12" width="6" height="26" rx="2" fill="#A4FF00"/><rect x="18" y="6" width="6" height="32" rx="2" fill="#A4FF00"/><rect x="28" y="18" width="6" height="20" rx="2" fill="#A4FF00"/><rect x="38" y="24" width="6" height="14" rx="2" fill="#A4FF00"/><text x="6" y="44" fill="#A4FF00" font-family="Montserrat" font-size="11" font-weight="700">LM</text></svg>
+            <span class="text-3xl font-bold tracking-tighter" style="color:#A4FF00">LIMEBOARD</span><span class="text-3xl font-bold">LM</span>
+        </div>
+        <a href="https://arena.ai" target="_blank" class="px-8 py-3 bg-[#A4FF00] text-[#0B0B0D] font-semibold rounded-2xl hover:bg-white flex items-center gap-2">Try Now</a>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero-bg min-h-screen flex items-center pt-20">
+    <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h1 class="text-7xl md:text-8xl font-bold leading-none tracking-tighter">FIND THE<br>PERFECT AI<br>FOR EVERY<br>TASK</h1>
+            <p class="text-2xl text-gray-400 mt-6">Real-time rankings from LMArena blind votes. Updated daily.</p>
+            <div class="flex gap-5 mt-10">
+                <a href="#leaderboard" class="px-10 py-6 bg-[#A4FF00] text-[#0B0B0D] font-semibold rounded-3xl text-xl">View Leaderboard ↓</a>
+                <a href="https://arena.ai/leaderboard" target="_blank" class="px-8 py-6 border-2 border-[#A4FF00]/50 hover:border-[#A4FF00] text-[#A4FF00] rounded-3xl text-xl">See Live Arena →</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard" class="py-24">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="flex justify-between mb-8">
+            <h2 class="text-5xl font-bold">2026 AI Model Leaderboard</h2>
+            <div id="lastUpdated" class="text-[#A4FF00] text-sm"></div>
+        </div>
+
+        <!-- Filters -->
+        <div class="flex gap-4 mb-6">
+            <input id="searchInput" placeholder="Search category or model..." class="bg-[#1A1A1F] border border-[#A4FF00]/30 px-6 py-4 rounded-3xl w-80 focus:border-[#A4FF00]">
+            <select id="categoryFilter" class="bg-[#1A1A1F] border border-[#A4FF00]/30 px-6 py-4 rounded-3xl">
+                <option value="">All Categories</option>
+            </select>
+        </div>
+
+        <div class="overflow-x-auto rounded-3xl border border-[#A4FF00]/10 bg-[#0F0F13]">
+            <table class="w-full min-w-[1100px]" id="leaderboardTable">
+                <thead>
+                    <tr class="border-b border-[#A4FF00]/10">
+                        <th class="py-8 px-10 text-left cursor-pointer hover:text-[#A4FF00]" data-sort="category">Category</th>
+                        <th class="py-8 px-10 text-left cursor-pointer hover:text-[#A4FF00]" data-sort="top">Top Model</th>
+                        <th class="py-8 px-10 text-left">Runner-ups</th>
+                        <th class="py-8 px-10 text-left">Why It Wins</th>
+                        <th class="py-8 px-10 text-left">Proof</th>
+                        <th class="py-8 px-10 text-left">Access</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
+<script>
+    let data = [];
+    fetch('data/leaderboard.json')
+        .then(r => r.json())
+        .then(json => {
+            data = json;
+            document.getElementById('lastUpdated').textContent = `Last updated: ${json[0].lastUpdated}`;
+            renderTable(json);
+            populateFilter(json);
+        });
+
+    function renderTable(rows) {
+        const tbody = document.getElementById('tableBody');
+        tbody.innerHTML = '';
+        rows.forEach(row => {
+            const tr = document.createElement('tr');
+            tr.className = 'table-row border-b border-[#A4FF00]/10';
+            tr.innerHTML = `
+                <td class="py-8 px-10 font-semibold">${row.category}</td>
+                <td class="py-8 px-10"><span class="text-[#A4FF00] text-2xl">⭐</span> <span class="font-bold">${row.top}</span></td>
+                <td class="py-8 px-10 text-sm text-gray-400">${row.runnerups}</td>
+                <td class="py-8 px-10 text-sm">${row.why}</td>
+                <td class="py-8 px-10 text-xs">${row.proof}</td>
+                <td class="py-8 px-10"><a href="${row.link}" target="_blank" class="text-[#A4FF00]">Open →</a></td>
+            `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    function populateFilter(rows) {
+        const filter = document.getElementById('categoryFilter');
+        const categories = [...new Set(rows.map(r => r.category))];
+        categories.forEach(cat => {
+            const opt = document.createElement('option');
+            opt.value = cat;
+            opt.textContent = cat;
+            filter.appendChild(opt);
+        });
+    }
+
+    // Live search + filter
+    document.getElementById('searchInput').addEventListener('input', filterTable);
+    document.getElementById('categoryFilter').addEventListener('change', filterTable);
+
+    function filterTable() {
+        const term = document.getElementById('searchInput').value.toLowerCase();
+        const cat = document.getElementById('categoryFilter').value;
+        const filtered = data.filter(row => 
+            (!cat || row.category === cat) &&
+            (row.category.toLowerCase().includes(term) || row.top.toLowerCase().includes(term))
+        );
+        renderTable(filtered);
+    }
+
+    // Simple sort on header click
+    document.querySelectorAll('th[data-sort]').forEach(th => {
+        th.addEventListener('click', () => {
+            const key = th.dataset.sort;
+            data.sort((a,b) => a[key].localeCompare(b[key]));
+            renderTable(data);
+        });
+    });
+</script>
+</body>
+</html>
