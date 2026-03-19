@@ -1,59 +1,65 @@
 [
   {
     "category": "General Conversation & Brainstorming",
-    "top": "Claude Opus 4.6 Thinking (Anthropic)",
-    "runnerups": "Claude Opus 4.6 • Gemini 3.1 Pro Preview",
-    "why": "Highest blind-vote Elo in Text Arena",
-    "proof": "Elo 1502 • 11k+ votes",
+    "top": "Claude Opus 4.6 Thinking",
+    "runnerups": "Claude Opus 4.6 \u2022 Gemini 3.1 Pro",
+    "why": "Highest Elo",
+    "proof": "Elo 1502",
     "link": "https://claude.ai",
     "lastUpdated": "March 19, 2026"
   },
   {
     "category": "Research & Deep Analysis",
-    "top": "Gemini 3.1 Pro Preview (Google)",
+    "top": "Gemini 3.1 Pro",
     "runnerups": "Claude Opus 4.6",
-    "why": "Best long-context + vision reasoning",
-    "proof": "MMLU-Pro 91% • ARC-AGI leader",
-    "link": "https://gemini.google.com"
+    "why": "Long context",
+    "proof": "MMLU-Pro 91%",
+    "link": "https://gemini.google.com",
+    "lastUpdated": "March 19, 2026"
   },
   {
     "category": "Creative & Professional Writing",
-    "top": "Claude Opus 4.6 (Anthropic)",
-    "runnerups": "Gemini 3.1 Pro Preview",
-    "why": "Unmatched prose and structure",
-    "proof": "Text Arena #1",
-    "link": "https://claude.ai"
+    "top": "Claude Opus 4.6",
+    "runnerups": "Gemini 3.1 Pro",
+    "why": "Best prose",
+    "proof": "Text #1",
+    "link": "https://claude.ai",
+    "lastUpdated": "March 19, 2026"
   },
   {
     "category": "Coding & Software Engineering",
-    "top": "Claude Opus 4.6 (Anthropic)",
-    "runnerups": "Claude Opus 4.6 Thinking",
-    "why": "SWE-Bench & Code Arena leader",
-    "proof": "Elo 1547",
-    "link": "https://claude.ai"
+    "top": "Claude Opus 4.6",
+    "runnerups": "o4-Mini",
+    "why": "SWE-Bench leader",
+    "proof": "~79%",
+    "link": "https://claude.ai",
+    "lastUpdated": "March 19, 2026"
   },
   {
     "category": "Advanced Reasoning & Math",
-    "top": "Gemini 3.1 Pro Preview (Google)",
-    "runnerups": "Claude Opus 4.6",
-    "why": "Highest complex logic scores",
+    "top": "Gemini 3.1 Pro",
+    "runnerups": "o4-Mini",
+    "why": "Complex logic",
     "proof": "LiveCodeBench #1",
-    "link": "https://gemini.google.com"
+    "link": "https://gemini.google.com",
+    "lastUpdated": "March 19, 2026"
   },
   {
     "category": "Image Generation",
-    "top": "Gemini Nano Banana 2 (Google)",
-    "runnerups": "GPT Image 1.5 High • FLUX.2 max",
-    "why": "Image Arena Elo leader",
+    "top": "Gemini Nano Banana 2",
+    "runnerups": "GPT Image 1.5 \u2022 FLUX.2",
+    "why": "Image Elo leader",
     "proof": "Elo 1268",
-    "link": "https://gemini.google.com"
+    "link": "https://gemini.google.com",
+    "lastUpdated": "March 19, 2026"
   },
   {
     "category": "Video Generation",
-    "top": "Veo 3.1 Audio 1080p (Google)",
-    "runnerups": "Grok Imagine Video • Kling 3.0",
-    "why": "Best physics & motion",
-    "proof": "Video Arena Elo 1381",
-    "link": "https://deepmind.google/technologies/veo/"
+    "top": "Veo 3.1 Audio",
+    "runnerups": "Kling 3.0 \u2022 Runway Gen-4.5",
+    "why": "Best motion",
+    "proof": "Video Elo 1381",
+    "link": "https://deepmind.google/veo/",
+    "lastUpdated": "March 19, 2026"
   }
 ]
