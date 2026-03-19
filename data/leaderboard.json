@@ -1,11 +1,59 @@
 [
   {
     "category": "General Conversation & Brainstorming",
-    "top": "Claude Opus 4.6 Thinking",
-    "runnerups": "Claude Opus 4.6 \u2022 Gemini 3.1 Pro",
-    "why": "Highest blind-vote Elo",
-    "proof": "Updated today",
-    "link": "https://arena.ai",
+    "top": "Claude Opus 4.6 Thinking (Anthropic)",
+    "runnerups": "Claude Opus 4.6 • Gemini 3.1 Pro Preview",
+    "why": "Highest blind-vote Elo in Text Arena",
+    "proof": "Elo 1502 • 11k+ votes",
+    "link": "https://claude.ai",
     "lastUpdated": "March 19, 2026"
+  },
+  {
+    "category": "Research & Deep Analysis",
+    "top": "Gemini 3.1 Pro Preview (Google)",
+    "runnerups": "Claude Opus 4.6",
+    "why": "Best long-context + vision reasoning",
+    "proof": "MMLU-Pro 91% • ARC-AGI leader",
+    "link": "https://gemini.google.com"
+  },
+  {
+    "category": "Creative & Professional Writing",
+    "top": "Claude Opus 4.6 (Anthropic)",
+    "runnerups": "Gemini 3.1 Pro Preview",
+    "why": "Unmatched prose and structure",
+    "proof": "Text Arena #1",
+    "link": "https://claude.ai"
+  },
+  {
+    "category": "Coding & Software Engineering",
+    "top": "Claude Opus 4.6 (Anthropic)",
+    "runnerups": "Claude Opus 4.6 Thinking",
+    "why": "SWE-Bench & Code Arena leader",
+    "proof": "Elo 1547",
+    "link": "https://claude.ai"
+  },
+  {
+    "category": "Advanced Reasoning & Math",
+    "top": "Gemini 3.1 Pro Preview (Google)",
+    "runnerups": "Claude Opus 4.6",
+    "why": "Highest complex logic scores",
+    "proof": "LiveCodeBench #1",
+    "link": "https://gemini.google.com"
+  },
+  {
+    "category": "Image Generation",
+    "top": "Gemini Nano Banana 2 (Google)",
+    "runnerups": "GPT Image 1.5 High • FLUX.2 max",
+    "why": "Image Arena Elo leader",
+    "proof": "Elo 1268",
+    "link": "https://gemini.google.com"
+  },
+  {
+    "category": "Video Generation",
+    "top": "Veo 3.1 Audio 1080p (Google)",
+    "runnerups": "Grok Imagine Video • Kling 3.0",
+    "why": "Best physics & motion",
+    "proof": "Video Arena Elo 1381",
+    "link": "https://deepmind.google/technologies/veo/"
   }
 ]
