@@ -2,8 +2,8 @@ name: Update Limeboard Leaderboard
 
 on:
   schedule:
-    - cron: '0 3 * * *'     # every day at 3 AM UTC
-  workflow_dispatch:        # manual trigger button
+    - cron: '0 3 * * *'          # every day at 03:00 UTC
+  workflow_dispatch:             # allows manual run from Actions tab
 
 jobs:
   scrape:
